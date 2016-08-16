@@ -1,0 +1,27 @@
+@import 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&subset=cyrillic';
+/*--------------------------------------------*/
+@import "./colors.css";
+@import "./header.css";
+@import "./index.css";
+@import "./show.css";
+
+body{
+  padding: 0;
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+  background-color: $bgColor;
+}
+
+a{
+  text-decoration: none;
+  &:hover{
+    text-decoration: underline;
+  }
+}
+
+.loader{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+}

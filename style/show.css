@@ -1,0 +1,161 @@
+@import './colors.css';
+
+.btn-prev, .btn-next{
+  position: fixed;
+  bottom: 0;
+  height: 50px;
+  width: 50%;
+  background-color: $secondColor;
+  color: white;
+  border: none;
+  cursor: pointer;
+  z-index: 6;
+
+  &:hover{
+    background-color: #ff5722;
+  }
+}
+
+.btn-next{
+  right: 0;
+  border-radius: 2px 0 0 2px;
+}
+.btn-prev{
+  left: 0;
+  border-radius: 0 2px 2px 0;
+}
+
+.btn-back{
+  position: absolute;
+  top: 20px;
+  left: 10px;
+  background-color: rgb(58, 58, 58);
+  padding: 4px 10px;
+  color: gray;
+  border-radius: 4px;
+}
+
+.show-content-video{
+  padding: 74px 0 0;
+  background-color: #080808;
+
+  $vidWidth: 100vw;
+  $vidHeith: calc($vidWidth / 1.8);
+
+  iframe, &-noFrame{
+    display: block;
+    margin: 0 auto;
+
+    width: $vidWidth;
+    height: $vidHeith;
+    max-width: 900px;
+    max-height: 500px;
+  }
+  &-noFrame{
+    overflow: hidden;
+  }
+  &-thumbnail{
+    width: 100%;
+    height: 100%;
+    filter: blur(10px);
+  }
+  &-source{
+    background-color: $secondColor;
+    color: white;
+    border-radius: 4px;
+    padding: 10px 15px;
+    z-index: 5;
+    position: relative;
+    top: 46%;
+    width: 136px;
+    display: block;
+    margin: 0 auto;
+    &:hover{
+      background-color: #ff5722;
+    }
+  }
+}
+
+.show-content-stats, .show-comments{
+  max-width: 900px;
+  margin: 0 auto;
+  border-radius: 5px;
+  margin-top: 20px;
+  padding: 16px 22px;
+  background-color: white;
+  box-sizing: border-box;
+}
+
+.show-content-stats{
+  font-weight: 100;
+
+  .show-content-title{
+    font-size: 16pt;
+    font-weight: 100;
+  }
+  .show-content-source{
+    display: flex;
+    align-items: center;
+    font-weight: normal;
+
+    .source{
+      display: flex;
+      flex-flow: column wrap;
+    }
+    .source-icon{
+      width: 50px;
+      height: 50px;
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
+      margin: 10px;
+    }
+  }
+}
+
+.show-comments{
+  padding: 0;
+  background-color: inherit;
+
+  .show-comments-chain{
+    margin-bottom: 10px;
+
+    .show-comments-comment{
+      background-color: white;
+      border-radius: 5px;
+      padding: 12px 24px;
+
+      &-text, &-author{
+        word-wrap: break-word;
+        overflow: auto;
+      }
+      &-replies{
+        margin: 2px 0 0 15px;
+      }
+    }
+  }
+}
+
+@media (min-width: 600px) {
+  .show-comments{
+    .show-comments-chain{
+      .show-comments-comment{
+        padding: 15px 30px;
+      }
+      .show-comments-comment-replies{
+        margin: 2px 0 0 30px;
+      }
+    }
+  }
+  .btn-prev, .btn-next{
+    top: 50%;
+    height: 100px;
+    width: auto;
+  }
+  .btn-next{
+    border-radius: 4px 0 0 4px;
+  }
+  .btn-prev{
+    border-radius: 0 4px 4px 0;
+  }
+}

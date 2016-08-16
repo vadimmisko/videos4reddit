@@ -1,0 +1,138 @@
+@import './colors.css';
+
+.index{
+  display: flex;
+  flex-direction: column;
+}
+
+.index-filterBar{
+  margin: 74px auto 20px;
+  display: inline-block;
+  background-color: $mainColor;
+  border-radius: 5px;
+
+  &-title{
+    border-radius: 5px 5px 0 0;
+    background-color: $secondColor;
+    color: white;
+    padding: 5px;
+    font-weight: bold;
+
+    svg{
+      fill: white;
+      height: 14pt;
+      width: 20pt;
+      margin: 0 7px;
+    }
+  }
+  &-options{
+    border-radius: 0 0 5px 5px;
+    padding: 6px 10px;
+  }
+}
+
+.index-items{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  margin-bottom: 20px;
+}
+
+.index-item{
+  width: 100%;
+  min-height: 100px;
+  height: 250px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  background-color: $mainColor;
+
+  &:hover{
+    box-shadow: 0px 0px 2px gray;
+  }
+  &-pic {
+    float: left;
+    margin-right: -100%;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+  }
+  &-text{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-between;
+
+    padding: 10px;
+    min-height: 90%;
+    a{
+      max-height: 200px;
+      overflow: hidden;
+    }
+  }
+  &-title{
+    font-size: 20pt;
+    font-weight: 600;
+    color: white;
+  }
+  &-stats {
+    color: white;
+  }
+  &-date {
+    display: none;
+    font-size: 10pt;
+    color: gray;
+  }
+  &-author {
+    color: black;
+  }
+}
+
+@media (min-width: 600px) {
+  .index{
+    display: block;
+  }
+  .index-filterBar{
+    margin: 20px auto;
+  }
+  .index-item{
+    height: 100px;
+    padding: 15px;
+    margin-bottom: 10px;
+
+    &-pic {
+      float: left;
+      margin-right: 10px;
+      width: 220px;
+      border-radius: 5px;
+    }
+    &-text{
+      display: flex;
+      flex-flow: column wrap;
+      justify-content: space-between;
+
+      padding: 0;
+      min-height: 100%;
+      a{
+        max-height: 64px;
+      }
+    }
+    &-title, &-stats {
+      font-weight: 100;
+      color: black;
+    }
+    &-title{
+      font-size: 12pt;
+    }
+    &-date {
+      display: block;
+    }
+  }
+}
+
+@media (min-width: 900px) {
+  .index{
+    margin: 0 auto;
+    max-width: 900px;
+  }
+}
