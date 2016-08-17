@@ -21,7 +21,7 @@
     "jquery": "^2.2.1",
     "jsdom": "^8.1.0",
     "mocha": "^2.4.5",
-    "react-addons-test-utils": "^15.2.1",
+    "react-addons-test-utils": "^15.2.1"
   },
   "dependencies": {
     "axios": "^0.13.1",
