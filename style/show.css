@@ -39,7 +39,7 @@
   padding: 70px 0 0;
   background-color: #080808;
 
-  $vidWidth: 100vw;
+  $vidWidth: 96vw;
   $vidHeith: calc($vidWidth / 1.8);
 
   iframe, &-noFrame{

@@ -4,7 +4,9 @@
   transform: translateX(-50%);
   z-index: 100;
 
-  img{
-    width: 140px;
-  }
+  background-image: url(./imgs/logo.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 55px;
+  width: 140px;
 }
