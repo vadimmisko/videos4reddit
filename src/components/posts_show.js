@@ -178,8 +178,15 @@ class PostsShow extends Component {
       <div className='show'>
         <Link to='/' className='btn-back'>Back</Link>
 
-        {this.findPost().join('') == 0 ? '' : <button className='btn-prev' onClick={this.actionMove.bind(null, 'prev')}>Prev</button>}
-        <button className='btn-next' onClick={this.actionMove.bind(null, 'next')}>Next</button>
+        {posts.length !== 0
+          ?
+          <div>
+            {this.findPost().join('') == 0 ? '' : <button className='btn-prev' onClick={this.actionMove.bind(null, 'prev')}>Prev</button>}
+            <button className='btn-next' onClick={this.actionMove.bind(null, 'next')}>Next</button>
+          </div>
+          :
+          ''
+        }
 
         {this.renderPost()}
 
