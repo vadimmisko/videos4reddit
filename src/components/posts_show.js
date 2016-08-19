@@ -5,7 +5,7 @@ import React,{ Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Link, browserHistory } from 'react-router';
 
-import { fetchPost } from '../actions/index';
+import { fetchPost, fetchMorePosts } from '../actions/index';
 
 import '../../style/show.css';
 
@@ -13,14 +13,24 @@ class PostsShow extends Component {
   constructor(){
     super();
     this.actionMove = this.actionMove.bind(this);
+    this.morePosts = this.morePosts.bind(this);
   }
 
   componentWillMount(){
     this.props.fetchPost(this.props.params.id);
   }
 
+  morePosts(){
+    this.props.fetchMorePosts(this.props.posts);
+  }
+
   actionMove(way){
     var currentPostNum = this.findPost().join('');
+
+    if (currentPostNum == this.props.posts.data.children.length - 2) {
+      // loading more posts when last video in array
+      this.morePosts();
+    }
 
     switch (way) {
       case 'next':
@@ -209,4 +219,4 @@ function mapStateToProps(state) {
   return { post: state.posts.post, posts: state.posts.all };
 }
 
-export default connect(mapStateToProps, { fetchPost })(PostsShow);
+export default connect(mapStateToProps, { fetchPost, fetchMorePosts })(PostsShow);
