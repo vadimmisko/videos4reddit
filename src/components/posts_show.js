@@ -97,7 +97,11 @@ class PostsShow extends Component {
     if (post.over_18) {
       var thumbnail = '../style/imgs/nsfw.jpg';
     }else {
-      var thumbnail = post.preview.images[0].source.url;
+      if (post.preview) {
+        var thumbnail = post.preview.images[0].source.url;
+      }else {
+        var thumbnail = '';
+      }
     }
 
     if (video_embed == undefined){
@@ -121,6 +125,9 @@ class PostsShow extends Component {
         var srcIcon = { backgroundImage: 'url(../style/imgs/liveleak.png)'};
         break;
       case 'twitter.com':
+        var srcIcon = { backgroundImage: 'url(../style/imgs/twitter.png)'};
+        break;
+      case 'mobile.twitter.com':
         var srcIcon = { backgroundImage: 'url(../style/imgs/twitter.png)'};
         break;
       default:
