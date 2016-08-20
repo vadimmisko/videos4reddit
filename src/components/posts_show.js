@@ -128,6 +128,9 @@ class PostsShow extends Component {
       case 'youtube.com':
         var srcIcon = { backgroundImage: 'url(../style/imgs/youtube.png)'};
         break;
+      case 'vimeo.com':
+        var srcIcon = { backgroundImage: 'url(../style/imgs/vimeo.png)'};
+        break;
       case 'streamable.com':
         var srcIcon = { backgroundImage: 'url(../style/imgs/streamable.png)'};
         break;
