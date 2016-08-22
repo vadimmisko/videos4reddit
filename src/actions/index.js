@@ -24,12 +24,11 @@ export function fetchPost(id) {
   };
 }
 
-export function fetchMorePosts(oldstate) {
-  const request = axios.get(`${ROOT_URL}.json?after=${oldstate.data.children[oldstate.data.children.length - 1].data.name}`)
+export function fetchMorePosts(oldState) {
+  const request = axios.get(`${ROOT_URL}.json?after=${oldState.data.children[oldState.data.children.length - 1].data.name}`)
     .then(function(response) {
-      var old = oldstate.data.children.concat(response.data.data.children);
-      var st = {data:{data:{children:old}}};
-      return st;
+      var newState = {data:{data:{children: oldState.data.children.concat(response.data.data.children) }}};
+      return newState;
     });
 
   return{
