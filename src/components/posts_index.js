@@ -32,7 +32,7 @@ class PostsIndex extends Component {
           </Link>
           <div className='index-item-text'>
             <Link to={'posts/' + post.data.id}>
-              <span className='index-item-title'>{post.data.title}</span>
+              <span className='index-item-title'>{this.specialCharsReplace(post.data.title)}</span>
             </Link>
             <span className='index-item-date'>
               submitted {moment.unix(post.data.created).calendar()} by <span className='index-item-author'>{post.data.author}</span>
@@ -46,6 +46,13 @@ class PostsIndex extends Component {
 
   morePosts(){
     this.props.fetchMorePosts(this.props.posts);
+  }
+
+  specialCharsReplace(content) {
+    return content
+      .replace(/&lt;/g,'<')
+      .replace(/&gt;/g,'>')
+      .replace(/&amp;/g,'&');
   }
 
   render() {

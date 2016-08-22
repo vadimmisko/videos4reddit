@@ -151,7 +151,7 @@ class PostsShow extends Component {
       <div className='show-content' key='12345'>
         <div className='show-content-video' dangerouslySetInnerHTML={{__html: this.specialCharsReplace(video_embed)}} />
         <div className='show-content-stats'>
-          <span className='show-content-title'>{post.title}</span>
+          <span className='show-content-title'>{this.specialCharsReplace(post.title)}</span>
           <br />
           <div className='show-content-source'>
             <div className='source-icon' style={srcIcon}></div>
@@ -179,7 +179,8 @@ class PostsShow extends Component {
   specialCharsReplace(content) {
     return content
       .replace(/&lt;/g,'<')
-      .replace(/&gt;/g,'>');
+      .replace(/&gt;/g,'>')
+      .replace(/&amp;/g,'&');
   }
 
   render() {
