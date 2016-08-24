@@ -2,8 +2,6 @@
 /*--------------------------------------------*/
 @import "./colors.css";
 @import "./header.css";
-@import "./index.css";
-@import "./show.css";
 /*--------------------------------------------*/
 body{
   padding: 0;

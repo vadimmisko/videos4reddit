@@ -6,7 +6,7 @@
 }
 
 .index-filterBar{
-  margin: 70px auto 20px;
+  margin: 60px auto 10px;
   display: inline-block;
   background-color: $mainColor;
   border-radius: 5px;
@@ -109,9 +109,6 @@
 @media (min-width: 600px) {
   .index{
     display: block;
-  }
-  .index-filterBar{
-    margin: 20px auto;
   }
   .index-item{
     height: 100px;
