@@ -24,5 +24,16 @@
   }
   &-auth{
     padding-right: 15px;
+    button{
+      padding: 6px 10px;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+
+      &:hover{
+        background-color: #ff5722;
+        color: white;
+      }
+    }
   }
 }
