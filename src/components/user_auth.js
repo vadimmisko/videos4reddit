@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import React,{ Component } from 'react';
 import { connect } from 'react-redux';
 import { Link, browserHistory } from 'react-router';
@@ -27,7 +28,9 @@ class UserLogin extends Component {
         this.props.userAuth(this.props.location.query.code);
         this.props.userInfo();
         sessionStorage.removeItem('randomCombination');
-        browserHistory.push('/');
+
+        const deb = _.debounce(() => { browserHistory.push('/') }, 100);
+        deb();
       }else {
         console.log('Error or Wrong Source');
         sessionStorage.removeItem('randomCombination');
