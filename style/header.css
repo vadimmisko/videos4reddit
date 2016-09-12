@@ -1,7 +1,6 @@
 @import './colors.css';
 
 .navbar{
-  position: absolute;
   z-index: 100;
   background-color: $mainColor;
   width: 100%;
@@ -13,6 +12,7 @@
   .logo{
     position: absolute;
     z-index: 100;
+    top: 5px;
     left: 50%;
     transform: translate(-50%);
 
@@ -20,7 +20,7 @@
     background-size: contain;
     background-repeat: no-repeat;
     width: 120px;
-    height: 90%;
+    height: 41px;
   }
   &-auth{
     padding-right: 15px;

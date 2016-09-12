@@ -3,34 +3,28 @@ import moment from 'moment';
 
 import './post_video.css';
 
-const PostVideo = ({post}) => {
-  function specialCharsReplace(content) {
-    return content
-      .replace(/&lt;/g,'<')
-      .replace(/&gt;/g,'>')
-      .replace(/&amp;/g,'&');
-  }
+const PostVideo = ({post, onVote}) => {
 
-  var post        = post[0].data.children[0].data;
-  var video_embed   = post.media_embed.content;
-  var linkToSource  = post.url;
-  var linkToReddit  = 'https://www.reddit.com' + post.permalink;
+  var post          = post[0].data.children[0];
+  var video_embed   = post.data.media_embed.content;
+  var linkToSource  = post.data.url;
+  var linkToReddit  = 'https://www.reddit.com' + post.data.permalink;
 
-  if (post.over_18) {
+  if (post.data.over_18) {
     var thumbnail = '../style/imgs/nsfw.jpg';
   }else {
-    if (post.preview) {
-      var thumbnail = post.preview.images[0].source.url;
+    if (post.data.preview) {
+      var thumbnail = post.data.preview.images[0].source.url;
     }else {
       var thumbnail = '';
     }
   }
 
   if (video_embed == undefined){
-    var video_embed = "<div class='show-content-video-noFrame'><a class='show-content-video-source' target='_blank' href=" + linkToSource + ">Link to the source</a><img class='show-content-video-thumbnail' src=" + thumbnail + "></div>";
+    var video_embed = `<div class='show-content-video-noFrame'><img class='show-content-video-thumbnail' src=${thumbnail}><a class='show-content-video-source' target='_blank' href=${linkToSource}>Link to the source</a></div>`;
   }
 
-  switch (post.domain) {
+  switch (post.data.domain) {
     case 'youtu.be':
       var srcIcon = { backgroundImage: 'url(../style/imgs/youtube.png)'};
       break;
@@ -55,24 +49,43 @@ const PostVideo = ({post}) => {
     case 'mobile.twitter.com':
       var srcIcon = { backgroundImage: 'url(../style/imgs/twitter.png)'};
       break;
+    case 'vid.me':
+      var srcIcon = { backgroundImage: 'url(../style/imgs/vidme.png)'};
+      break;
     default:
       var srcIcon = { backgroundColor: 'white'};
+  }
+
+  function voting(vote){
+    var pack = [post, vote];
+    onVote(pack);
+  }
+
+  function specialCharsReplace(content) {
+    return content
+      .replace(/&lt;/g,'<')
+      .replace(/&gt;/g,'>')
+      .replace(/&amp;/g,'&');
   }
 
   return (
     <div className='show-content' key='12345'>
       <div className='show-content-video' dangerouslySetInnerHTML={{__html: specialCharsReplace(video_embed)}} />
       <div className='show-content-stats'>
-        <span className='show-content-title'>{specialCharsReplace(post.title)}</span>
+        <span className='show-content-title'>{specialCharsReplace(post.data.title)}</span>
         <br />
         <div className='show-content-source'>
           <div className='source-icon' style={srcIcon}></div>
           <div className='source'>
-            <span>Submitted by {post.author}</span>
+            <span>Submitted by {post.data.author}</span>
             <span><a target='_blank' href={linkToSource}>Source</a> · <a target='_blank' href={linkToReddit}>Link to a reddit post</a></span>
           </div>
         </div>
-        Score: {post.score} · Comments: {post.num_comments} · Submitted {moment.unix(post.created).calendar()}
+
+        <button onClick={voting.bind(null, '1')}>upvote</button>
+        <button onClick={voting.bind(null, '-1')}>downvote</button>
+
+        Score: {post.data.score} · Comments: {post.data.num_comments} · Submitted {moment.unix(post.data.created).calendar()}
         <br />
       </div>
     </div>

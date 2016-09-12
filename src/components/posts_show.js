@@ -6,6 +6,8 @@ import { connect } from 'react-redux';
 import { Link, browserHistory } from 'react-router';
 
 import { fetchPost, fetchMorePosts } from '../actions/index';
+import { userVote } from '../actions/user_actions';
+
 import Loader from './loader/loader.js';
 import PostVideo from './post_video/post_video.js';
 import '../../style/show.css';
@@ -51,8 +53,6 @@ class PostsShow extends Component {
 
   renderComments(){
     var md = new Remarkable(); // Markdown transpiler
-
-    var replyy = null;
 
     function renderNestedComments(reply){
       if (reply !== '' && reply !== undefined) {
@@ -139,7 +139,9 @@ class PostsShow extends Component {
           ''
         }
 
-        <PostVideo post={this.props.post} />
+        <PostVideo
+          post={this.props.post}
+          onVote={this.props.userVote}/>
 
         <div className='show-comments'>
           {this.renderComments()}
@@ -154,4 +156,4 @@ function mapStateToProps(state) {
   return { post: state.posts.post, posts: state.posts.all };
 }
 
-export default connect(mapStateToProps, { fetchPost, fetchMorePosts })(PostsShow);
+export default connect(mapStateToProps, { fetchPost, fetchMorePosts, userVote })(PostsShow);

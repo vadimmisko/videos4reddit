@@ -1,7 +1,6 @@
 @import '../../../style/colors.css';
 
 .show-content-video{
-  padding: 50px 0 0;
   background-color: #080808;
 
   $vidWidth: 96vw;
@@ -31,7 +30,7 @@
     padding: 10px 15px;
     z-index: 5;
     position: relative;
-    top: 46%;
+    top: -55%;
     width: 136px;
     display: block;
     margin: 0 auto;

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-export const FETCH_POSTS = 'FETCH_POSTS';
-export const FETCH_POST = 'FETCH_POST';
+export const FETCH_POSTS      = 'FETCH_POSTS';
+export const FETCH_POST       = 'FETCH_POST';
 export const FETCH_MORE_POSTS = 'FETCH_MORE_POSTS';
 
 const ROOT_URL = 'https://www.reddit.com/r/videos';
@@ -27,7 +27,7 @@ export function fetchPost(id) {
 export function fetchMorePosts(oldState) {
   const request = axios.get(`${ROOT_URL}.json?after=${oldState.data.children[oldState.data.children.length - 1].data.name}`)
     .then(function(response) {
-      var newState = {data:{data:{children: oldState.data.children.concat(response.data.data.children) }}};
+      var newState = {data:{data:{children: oldState.data.children.concat(response.data.data.children)}}};
       return newState;
     });
 

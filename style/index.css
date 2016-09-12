@@ -6,7 +6,7 @@
 }
 
 .index-filterBar{
-  margin: 60px auto 10px;
+  margin: 10px auto;
   display: inline-block;
   background-color: $mainColor;
   border-radius: 5px;
