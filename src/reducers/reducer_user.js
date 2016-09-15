@@ -11,6 +11,7 @@ export default function(state = INITIAL_STATE, action) {
       sessionStorage.setItem('refresh_token', action.payload.data.refresh_token);
       return { ...state, access: action.payload.data };
     case USER_INFO:
+      sessionStorage.setItem('user', action.payload.data.name);
       return { ...state, info: action.payload.data };
 
     default:

@@ -25,12 +25,13 @@ class UserLogin extends Component {
 
       // Checking for the right source & no errors
       if (sessionStorage.getItem('randomCombination') == this.props.location.query.state && !this.props.location.query.error) {
-        this.props.userAuth(this.props.location.query.code);
-        this.props.userInfo();
-        sessionStorage.removeItem('randomCombination');
+        this.props.userAuth(this.props.location.query.code).then(obj => {
+          this.props.userInfo(obj.payload.data.access_token);
+        });
 
-        const deb = _.debounce(() => { browserHistory.push('/') }, 100);
-        deb();
+        sessionStorage.removeItem('randomCombination');
+        const toTheFrontpage = _.debounce(() => { browserHistory.push('/') }, 1000);
+        toTheFrontpage();
       }else {
         console.log('Error or Wrong Source');
         sessionStorage.removeItem('randomCombination');
