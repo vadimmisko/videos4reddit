@@ -23,7 +23,11 @@ class PostsIndex extends Component {
       if (post.data.over_18 == true) {
         var divStyle = { backgroundImage: 'url(../style/imgs/nsfw.jpg)'};
       }else {
-        var divStyle = { backgroundImage: 'url(' + post.data.thumbnail + ')'};
+        if (post.data.thumbnail !== 'default') {
+          var divStyle = { backgroundImage: 'url(' + post.data.thumbnail + ')'};
+        }else {
+          var divStyle = { backgroundColor: 'black'};
+        }
       }
 
       return (
