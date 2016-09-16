@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Link, browserHistory } from 'react-router';
 import randomWords from 'random-words';
 
+import Loader from './loader/loader.js';
 import { userAuth } from '../actions/auth_action';
 import { userInfo } from '../actions/user_actions';
 
@@ -60,8 +61,9 @@ class UserLogin extends Component {
     return(
       <div className='auth'>
         Signing you in...
-        <hr />
-        {this.props.location.query.error ? login_err : ''}
+        <Loader />
+
+        {this.props.location.query.error ? <div className='auth-error'>{login_err}</div> : ''}
       </div>
     );
   }

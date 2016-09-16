@@ -57,8 +57,12 @@ const PostVideo = ({post, onVote}) => {
   }
 
   function voting(vote){
-    var pack = [post, vote];
-    onVote(pack);
+    if (sessionStorage.getItem('access_token') && sessionStorage.getItem('access_token') !== 'undefined') {
+      var pack = [post, vote];
+      onVote(pack);
+    }else {
+      alert('Sign in to vote');
+    }
   }
 
   function specialCharsReplace(content) {
@@ -82,8 +86,10 @@ const PostVideo = ({post, onVote}) => {
           </div>
         </div>
 
-        <button onClick={voting.bind(null, '1')}>upvote</button>
-        <button onClick={voting.bind(null, '-1')}>downvote</button>
+        <div className='vote-arrows'>
+          <button onClick={voting.bind(null, '1')}>upvote</button>
+          <button onClick={voting.bind(null, '-1')}>downvote</button>
+        </div>
 
         Score: {post.data.score} · Comments: {post.data.num_comments} · Submitted {moment.unix(post.data.created).calendar()}
         <br />

@@ -16,3 +16,17 @@ a{
     text-decoration: underline;
   }
 }
+
+.auth{
+  text-align: center;
+  margin-top: 20px;
+
+  &-error{
+    background-color: red;
+    width: 450px;
+    margin: 20px auto;
+    padding: 10px;
+    border-radius: 6px;
+    color: white;
+  }
+}
