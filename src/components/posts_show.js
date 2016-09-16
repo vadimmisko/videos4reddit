@@ -44,7 +44,7 @@ class PostsShow extends Component {
         break;
     }
 
-    browserHistory.push('/posts/' + this.props.posts.data.children[currentPostNum].data.id);
+    browserHistory.push('/post/' + this.props.posts.data.children[currentPostNum].data.id);
     const deb = _.debounce(() => { this.props.fetchPost(this.props.params.id) }, 0.1);
     deb();
 

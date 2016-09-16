@@ -61,9 +61,7 @@ class UserLogin extends Component {
     return(
       <div className='auth'>
         Signing you in...
-        <Loader />
-
-        {this.props.location.query.error ? <div className='auth-error'>{login_err}</div> : ''}
+        { this.props.location.query.error ? <div className='auth-error'>{login_err}</div> : <Loader /> }
       </div>
     );
   }
