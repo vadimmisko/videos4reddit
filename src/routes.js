@@ -9,7 +9,7 @@ import UserAuth from './components/user_auth';
 export default(
   <Route path='/' component={App}>
     <IndexRoute component={PostsIndex} />
-    <Route path='posts/:id' component={PostsShow} />
+    <Route path='post/:id' component={PostsShow} />
     <Route path='signin' component={UserAuth} />
   </Route>
 );

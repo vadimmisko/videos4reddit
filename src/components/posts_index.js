@@ -28,11 +28,11 @@ class PostsIndex extends Component {
 
       return (
         <div className='index-item' key={post.data.id}>
-          <Link to={'posts/' + post.data.id}>
+          <Link to={'post/' + post.data.id}>
             <div className='index-item-pic' style={divStyle} />
           </Link>
           <div className='index-item-text'>
-            <Link to={'posts/' + post.data.id}>
+            <Link to={'post/' + post.data.id}>
               <span className='index-item-title'>{this.specialCharsReplace(post.data.title)}</span>
             </Link>
             <span className='index-item-date'>

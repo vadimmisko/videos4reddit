@@ -1,4 +1,4 @@
-# RedditVideos
+# Videos4Reddit
 
 Simple User Interface for viewing [r/videos](https://www.reddit.com/r/videos/).
 
