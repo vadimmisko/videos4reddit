@@ -7,7 +7,9 @@
   "scripts": {
     "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
-    "test:watch": "npm run test -- --watch"
+    "test:watch": "npm run test -- --watch",
+    "prod": "NODE_ENV=production node server.js",
+    "postinstall": "webpack -p"
   },
   "author": "Vadim Misko",
   "license": "ISC",
@@ -28,6 +30,7 @@
     "axios": "^0.13.1",
     "babel-preset-stage-1": "^6.1.18",
     "css-loader": "^0.23.1",
+    "express": "^4.14.0",
     "lodash": "^3.10.1",
     "moment": "^2.14.1",
     "postcss-loader": "^0.9.1",
