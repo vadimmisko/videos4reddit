@@ -21,6 +21,11 @@ class PostsShow extends Component {
 
   componentWillMount(){
     this.props.fetchPost(this.props.params.id);
+
+    if (this.findPost().join('') >= this.props.posts.data.children.length - 2) {
+      // loading more posts when last video in array
+      this.morePosts();
+    }
   }
 
   morePosts(){
@@ -29,11 +34,6 @@ class PostsShow extends Component {
 
   actionMove(way){
     var currentPostNum = this.findPost().join('');
-
-    if (currentPostNum == this.props.posts.data.children.length - 2) {
-      // loading more posts when last video in array
-      this.morePosts();
-    }
 
     switch (way) {
       case 'next':
@@ -45,7 +45,7 @@ class PostsShow extends Component {
     }
 
     browserHistory.push('/post/' + this.props.posts.data.children[currentPostNum].data.id);
-    const deb = _.debounce(() => { this.props.fetchPost(this.props.params.id) }, 0.1);
+    const deb = _.debounce(() => { this.componentWillMount() }, 0.1);
     deb();
 
     window.scrollTo(0, 0);
