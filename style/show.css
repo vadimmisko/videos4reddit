@@ -50,7 +50,7 @@
     .show-comments-comment{
       background-color: white;
       border-radius: 5px;
-      padding: 12px 24px;
+      padding: 10px 14px 1px;
       box-shadow: 0 1px 2px rgba(0,0,0,.1);
 
       &-text, &-author{
@@ -68,7 +68,7 @@
   .show-comments{
     .show-comments-chain{
       .show-comments-comment{
-        padding: 15px 30px;
+        padding: 15px 30px 1px;
       }
       .show-comments-comment-replies{
         margin: 2px 0 0 20px;

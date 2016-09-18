@@ -85,13 +85,19 @@ const PostVideo = ({post, onVote}) => {
             <span><a target='_blank' href={linkToSource}>Source</a> · <a target='_blank' href={linkToReddit}>Link to a reddit post</a></span>
           </div>
         </div>
+        <div className='show-content-bottom'>
+          <div>Score: {post.data.score} · Comments: {post.data.num_comments} · Submitted {moment.unix(post.data.created).calendar()}</div>
 
-        <div className='vote-arrows'>
-          <button onClick={voting.bind(null, '1')}>upvote</button>
-          <button onClick={voting.bind(null, '-1')}>downvote</button>
+
+          <div className='vote-arrows'>
+            {/* TODO: Make this into another component */}
+
+            <button onClick={voting.bind(null, '1')} className='vote-btn upvote'><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z"/></svg></button>
+            <button onClick={voting.bind(null, '-1')} className='vote-btn downvote'><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z"/></svg></button>
+          </div>
         </div>
 
-        Score: {post.data.score} · Comments: {post.data.num_comments} · Submitted {moment.unix(post.data.created).calendar()}
+
         <br />
       </div>
     </div>

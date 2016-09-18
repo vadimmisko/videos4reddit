@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import Remarkable from 'remarkable';
+import SnuOwnd from 'snuownd';
 import moment from 'moment';
 import React,{ Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
@@ -52,12 +52,14 @@ class PostsShow extends Component {
   }
 
   renderComments(){
-    var md = new Remarkable(); // Markdown transpiler
-
     function renderNestedComments(reply){
       if (reply !== '' && reply !== undefined) {
         return reply.data.children.map((comm) => {
-          const comment         = md.render(comm.data.body);
+          if (comm.data.body !== '' && comm.data.body !== undefined){
+            var comment = SnuOwnd.getParser().render(comm.data.body);
+          }else{
+            var comment = '';
+          }
           const comment_id      = comm.data.id;
           const comment_author  = comm.data.author;
           const comment_score   = comm.data.score;
@@ -79,13 +81,18 @@ class PostsShow extends Component {
     }
 
     return this.props.post[1].data.children.map((comm) => {
-      const comment         = md.render(comm.data.body);
+      if (comm.data.body !== '' && comm.data.body !== undefined){
+        var comment = SnuOwnd.getParser().render(comm.data.body);
+      }else{
+        var comment = '';
+      }
+
       const comment_id      = comm.data.id;
       const comment_author  = comm.data.author;
       const comment_score   = comm.data.score;
       const comment_replies = comm.data.replies;
 
-      if (comm.data.body !== '') {
+      if (comment !== '') {
         return (
           <div className='show-comments-chain' key={comment_id}>
             <div className='show-comments-comment'>

@@ -42,7 +42,7 @@
     "react-router": "^2.0.0-rc5",
     "redux": "^3.5.2",
     "redux-promise": "^0.5.3",
-    "remarkable": "^1.6.2",
+    "snuownd": "^1.1.0",
     "style-loader": "^0.13.1",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1"
