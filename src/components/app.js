@@ -34,6 +34,17 @@ export default class App extends Component {
 
         {this.props.children}
 
+        <footer className="footer">
+          <span className='footer-share'>
+            <a className="github-button" href="https://github.com/vadimmisko/videos4reddit" data-count-href="/vadimmisko/videos4reddit/stargazers" data-count-api="/repos/vadimmisko/videos4reddit#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star vadimmisko/videos4reddit on GitHub">Star</a>
+
+            <a href="https://twitter.com/share" className="twitter-share-button" data-show-count="false">Tweet</a>
+          </span>
+          <span className='footer-name'>
+            made by <a href="https://github.com/vadimmisko">Vadim Misko</a>
+          </span>
+        </footer>
+
       </div>
     );
   }
