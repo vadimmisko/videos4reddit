@@ -12,6 +12,7 @@ class PostsIndex extends Component {
   constructor(){
     super();
     this.morePosts = this.morePosts.bind(this);
+    this.sortBy = this.sortBy.bind(this);
   }
 
   componentWillMount(){
@@ -49,6 +50,27 @@ class PostsIndex extends Component {
     })
   }
 
+  sortBy(type){
+    switch (type) {
+      case 'hot':
+        localStorage.setItem('sort-by', 'hot');
+        this.props.fetchPosts();
+        break;
+      case 'new':
+        localStorage.setItem('sort-by', 'new');
+        this.props.fetchPosts();
+        break;
+      case 'rising':
+        localStorage.setItem('sort-by', 'rising');
+        this.props.fetchPosts();
+        break;
+      case 'top':
+        localStorage.setItem('sort-by', 'top');
+        this.props.fetchPosts();
+        break;
+    }
+  }
+
   morePosts(){
     this.props.fetchMorePosts(this.props.posts);
   }
@@ -74,7 +96,12 @@ class PostsIndex extends Component {
             </svg>
             VIDEOS
           </div>
-          <div className='index-filterBar-options'>HOT | NEW | RISING | TOP </div>
+          <div className='index-filterBar-options'>
+            <button onClick={this.sortBy.bind(null, 'hot')}>HOT</button>
+            <button onClick={this.sortBy.bind(null, 'new')}>NEW</button>
+            <button onClick={this.sortBy.bind(null, 'rising')}>RISING</button>
+            <button onClick={this.sortBy.bind(null, 'top')}>TOP</button>
+          </div>
         </div>
 
         <div className='index-items'>

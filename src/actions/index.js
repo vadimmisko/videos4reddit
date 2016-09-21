@@ -7,7 +7,13 @@ export const FETCH_MORE_POSTS = 'FETCH_MORE_POSTS';
 const ROOT_URL = 'https://www.reddit.com/r/videos';
 
 export function fetchPosts() {
-  const request = axios.get(`${ROOT_URL}.json`);
+  if (!localStorage.getItem('sort-by')) {
+    localStorage.setItem('sort-by', 'hot');
+  }
+
+  var sorting = localStorage.getItem('sort-by');
+
+  const request = axios.get(`${ROOT_URL}/${sorting}/.json`);
 
   return{
     type: FETCH_POSTS,
