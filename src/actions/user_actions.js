@@ -4,7 +4,6 @@ export const USER_INFO = 'USER_INFO';
 export const USER_VOTE = 'USER_VOTE';
 
 const ROOT_URL = 'https://oauth.reddit.com';
-var token = sessionStorage.getItem('access_token');
 
 export function userInfo(token) {
   const request = axios.get(
@@ -23,6 +22,7 @@ export function userInfo(token) {
 }
 
 export function userVote(vote_data) {
+  var token = sessionStorage.getItem('access_token');
 
   const request = axios.post(
     `${ROOT_URL}/api/vote`,
