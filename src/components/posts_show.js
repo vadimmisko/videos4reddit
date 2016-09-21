@@ -22,7 +22,7 @@ class PostsShow extends Component {
   componentWillMount(){
     this.props.fetchPost(this.props.params.id);
 
-    if (this.findPost().join('') >= this.props.posts.data.children.length - 2) {
+    if (this.props.post && this.findPost().join('') >= this.props.posts.data.children.length - 2) {
       // loading more posts when last video in array
       this.morePosts();
     }
