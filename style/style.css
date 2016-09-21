@@ -27,11 +27,11 @@ a{
 
 .auth{
   text-align: center;
-  margin-top: 20px;
+  margin-bottom: 60px;
 
   &-error{
     background-color: red;
-    width: 450px;
+    max-width: 450px;
     margin: 20px auto;
     padding: 10px;
     border-radius: 6px;
