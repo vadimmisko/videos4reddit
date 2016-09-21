@@ -11,7 +11,7 @@ const PostVideo = ({post, onVote}) => {
   var linkToReddit  = 'https://www.reddit.com' + post.data.permalink;
 
   if (post.data.over_18) {
-    var thumbnail = '../style/imgs/nsfw.jpg';
+    var thumbnail = 'style/imgs/nsfw.jpg';
   }else {
     if (post.data.preview) {
       var thumbnail = post.data.preview.images[0].source.url;
@@ -26,31 +26,31 @@ const PostVideo = ({post, onVote}) => {
 
   switch (post.data.domain) {
     case 'youtu.be':
-      var srcIcon = { backgroundImage: 'url(../style/imgs/youtube.png)'};
+      var srcIcon = { backgroundImage: 'url(/style/imgs/youtube.png)'};
       break;
     case 'm.youtube.com':
-      var srcIcon = { backgroundImage: 'url(../style/imgs/youtube.png)'};
+      var srcIcon = { backgroundImage: 'url(/style/imgs/youtube.png)'};
       break;
     case 'youtube.com':
-      var srcIcon = { backgroundImage: 'url(../style/imgs/youtube.png)'};
+      var srcIcon = { backgroundImage: 'url(/style/imgs/youtube.png)'};
       break;
     case 'vimeo.com':
-      var srcIcon = { backgroundImage: 'url(../style/imgs/vimeo.png)'};
+      var srcIcon = { backgroundImage: 'url(/style/imgs/vimeo.png)'};
       break;
     case 'streamable.com':
-      var srcIcon = { backgroundImage: 'url(../style/imgs/streamable.png)'};
+      var srcIcon = { backgroundImage: 'url(/style/imgs/streamable.png)'};
       break;
     case 'liveleak.com':
-      var srcIcon = { backgroundImage: 'url(../style/imgs/liveleak.png)'};
+      var srcIcon = { backgroundImage: 'url(/style/imgs/liveleak.png)'};
       break;
     case 'twitter.com':
-      var srcIcon = { backgroundImage: 'url(../style/imgs/twitter.png)'};
+      var srcIcon = { backgroundImage: 'url(/style/imgs/twitter.png)'};
       break;
     case 'mobile.twitter.com':
-      var srcIcon = { backgroundImage: 'url(../style/imgs/twitter.png)'};
+      var srcIcon = { backgroundImage: 'url(/style/imgs/twitter.png)'};
       break;
     case 'vid.me':
-      var srcIcon = { backgroundImage: 'url(../style/imgs/vidme.png)'};
+      var srcIcon = { backgroundImage: 'url(/style/imgs/vidme.png)'};
       break;
     default:
       var srcIcon = { backgroundColor: 'white'};
