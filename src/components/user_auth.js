@@ -18,7 +18,7 @@ class UserLogin extends Component {
 
       sessionStorage.setItem('randomCombination', randomCombination);
 
-      window.location.assign(`https://www.reddit.com/api/v1/authorize?response_type=code&client_id=sDFKds2lsz5oHw&state=${randomCombination}&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2Fsignin&duration=permanent&scope=identity%2Chistory%2Cread%2Cmysubreddits%2Cvote`);
+      window.location.assign(`https://www.reddit.com/api/v1/authorize?response_type=code&client_id=sDFKds2lsz5oHw&state=${randomCombination}&redirect_uri=https%3A%2F%2Fv4r%2Eherokuapp%2Ecom%2Fsignin&duration=permanent&scope=identity%2Chistory%2Cread%2Cmysubreddits%2Cvote`);
 
     }else {
       // User is on the /signin for the second time
