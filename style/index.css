@@ -38,6 +38,7 @@
 
       &:hover{
         background-color: #f2f2f2;
+        cursor: pointer;
       }
 
       &:first-of-type{

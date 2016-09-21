@@ -94,7 +94,7 @@ class PostsIndex extends Component {
             <svg xmlns="http://www.w3.org/2000/svg">
               <path d="M 3.71875 7.78125 L 2.28125 9.21875 L 11.28125 18.21875 L 12 18.90625 L 12.71875 18.21875 L 21.71875 9.21875 L 20.28125 7.78125 L 12 16.0625 L 3.71875 7.78125 z"></path>
             </svg>
-            VIDEOS
+            r/ VIDEOS
           </div>
           <div className='index-filterBar-options'>
             <button onClick={this.sortBy.bind(null, 'hot')}>HOT</button>
