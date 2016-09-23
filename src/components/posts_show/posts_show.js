@@ -5,12 +5,12 @@ import React,{ Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Link, browserHistory } from 'react-router';
 
-import { fetchPost, fetchMorePosts } from '../actions/index';
-import { userVote } from '../actions/user_actions';
+import { fetchPost, fetchMorePosts } from '../../actions/index';
+import { userVote } from '../../actions/user_actions';
 
-import Loader from './loader/loader.js';
+import Loader from '../loader/loader.js';
 import PostVideo from './post_video/post_video.js';
-import '../../style/show.css';
+import './posts_show.css';
 
 class PostsShow extends Component {
   constructor(){

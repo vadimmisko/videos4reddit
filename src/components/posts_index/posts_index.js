@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import moment from 'moment';
 
-import { fetchPosts, fetchMorePosts } from '../actions/index';
-import Loader from './loader/loader.js';
+import { fetchPosts, fetchMorePosts } from '../../actions/index';
+import Loader from '../loader/loader.js';
 
-import '../../style/index.css';
+import './posts_index.css';
 
 class PostsIndex extends Component {
   constructor(){
@@ -22,7 +22,7 @@ class PostsIndex extends Component {
   renderPosts(){
     return this.props.posts.data.children.map((post) => {
       if (post.data.over_18 == true) {
-        var divStyle = { backgroundImage: 'url(../style/imgs/nsfw.jpg)'};
+        var divStyle = { backgroundImage: 'url(/style/imgs/nsfw.jpg)'};
       }else {
         if (post.data.thumbnail !== 'default') {
           var divStyle = { backgroundImage: 'url(' + post.data.thumbnail + ')'};

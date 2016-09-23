@@ -1,4 +1,4 @@
-@import './colors.css';
+@import '../../../style/colors.css';
 
 .btn-prev, .btn-next{
   position: fixed;
