@@ -1,6 +1,8 @@
 var express = require('express');
 var app = express();
+var compression = require('compression');
 
+app.use(compression());
 app.use(express.static(__dirname + '/'));
 // TODO: Make all routes be imported from ./src/routes.js
 app.use('/signin', express.static(__dirname + '/'));
