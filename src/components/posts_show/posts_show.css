@@ -79,6 +79,7 @@
     top: 50%;
     height: 100px;
     width: auto;
+    transform: translateY(-50%);
   }
   .btn-next{
     border-radius: 4px 0 0 4px;
