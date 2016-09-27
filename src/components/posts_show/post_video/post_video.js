@@ -92,8 +92,8 @@ const PostVideo = ({post, onVote}) => {
           <div className='vote-arrows'>
             {/* TODO: Make this into another component */}
 
-            <button onClick={voting.bind(null, '1')} className='vote-btn upvote'><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z"/></svg></button>
-            <button onClick={voting.bind(null, '-1')} className='vote-btn downvote'><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z"/></svg></button>
+            <button onClick={voting.bind(null, '1')} className='vote-btn upvote'><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M13 7v-6l11 11-11 11v-6h-13v-10z"/></svg></button>
+            <button onClick={voting.bind(null, '-1')} className='vote-btn downvote'><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M13 7v-6l11 11-11 11v-6h-13v-10z"/></svg></button>
           </div>
         </div>
 

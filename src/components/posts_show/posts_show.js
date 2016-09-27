@@ -64,12 +64,15 @@ class PostsShow extends Component {
           const comment_author  = comm.data.author;
           const comment_score   = comm.data.score;
           const comment_replies = comm.data.replies;
+          const comment_date    = comm.data.created;
 
           if (comment !== '') {
             return (
               <div className='show-comments-comment-replies' key={comment_id}>
                 <div className='show-comments-comment'>
-                  <span className='show-comments-comment-author'>{comment_author}</span> | {comment_score}
+                  <span className='show-comments-comment-title'>
+                    <span className='show-comments-comment-author'>{comment_author}</span> · {comment_score} {comment_score!==1 ? 'points' : 'point'} · {moment.unix(comment_date).calendar()}
+                  </span>
                   <span className='show-comments-comment-text' dangerouslySetInnerHTML={{__html: comment}}></span>
                 </div>
                 {renderNestedComments(comment_replies)}
@@ -91,13 +94,16 @@ class PostsShow extends Component {
       const comment_author  = comm.data.author;
       const comment_score   = comm.data.score;
       const comment_replies = comm.data.replies;
+      const comment_date    = comm.data.created;
 
       if (comment !== '') {
         return (
           <div className='show-comments-chain' key={comment_id}>
             <div className='show-comments-comment'>
-              <span className='show-comments-comment-author'>{comment_author}</span> | {comment_score}
-              <div className='show-comments-comment-text' dangerouslySetInnerHTML={{__html: comment}}></div>
+              <span className='show-comments-comment-title'>
+                <span className='show-comments-comment-author'>{comment_author}</span> · {comment_score} {comment_score!==1 ? 'points' : 'point'} · {moment.unix(comment_date).calendar()}
+              </span>
+              <span className='show-comments-comment-text' dangerouslySetInnerHTML={{__html: comment}}></span>
             </div>
             {renderNestedComments(comment_replies)}
           </div>
