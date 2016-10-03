@@ -16,15 +16,17 @@ class PostsShow extends Component {
   constructor(){
     super();
     this.actionMove = this.actionMove.bind(this);
-    this.morePosts = this.morePosts.bind(this);
+    this.morePosts  = this.morePosts.bind(this);
   }
 
   componentWillMount(){
     this.props.fetchPost(this.props.params.id);
 
-    if (this.props.post && this.findPost().join('') >= this.props.posts.data.children.length - 2) {
-      // loading more posts when last video in array
-      this.morePosts();
+    if (this.props.posts) {
+      if (this.props.post && this.findPost() >= this.props.posts.data.children.length - 3) {
+        // loading more posts when last video in array
+        this.morePosts();
+      }
     }
   }
 
@@ -33,22 +35,18 @@ class PostsShow extends Component {
   }
 
   actionMove(way){
-    var currentPostNum = this.findPost().join('');
-
     switch (way) {
       case 'next':
-        var currentPostNum = parseInt(currentPostNum) + 1;
+        var currentPostNum = this.findPost() + 1;
         break;
       case 'prev':
-        var currentPostNum = parseInt(currentPostNum) - 1;
+        var currentPostNum = this.findPost() - 1;
         break;
     }
 
     browserHistory.push('/post/' + this.props.posts.data.children[currentPostNum].data.id);
     const deb = _.debounce(() => { this.componentWillMount() }, 0.1);
     deb();
-
-    window.scrollTo(0, 0);
   }
 
   renderComments(){
@@ -113,12 +111,18 @@ class PostsShow extends Component {
   }
 
   findPost(){
-    return this.props.posts.data.children.map((post) => {
+    var currentPostNum = this.props.posts.data.children.map((post) => {
       if (post.data.id == this.props.params.id) {
         var currentPostNum = this.props.posts.data.children.indexOf(post);
         return currentPostNum;
       }
     })
+
+    currentPostNum = _.last(currentPostNum.filter(function( element ) {
+      return element !== undefined;
+    }));
+
+    return currentPostNum;
   }
 
   specialCharsReplace(content) {
@@ -132,20 +136,23 @@ class PostsShow extends Component {
     const { post }  = this.props;
     const { posts } = this.props;
 
-    if (!post || post[0].data.children[0].data.id !== this.props.params.id) {
-      return <Loader />;
-    }
-
     window.scrollTo(0, 0);
+
+    if (posts.length == 0) {
+      if (!post || post[0].data.children[0].data.id !== this.props.params.id) {
+        return <Loader />;
+      }
+    }
 
     return (
       <div className='show'>
         <Link to='/' className='btn-back'>Back</Link>
 
-        {posts.length !== 0
+        {
+          posts.length !== 0
           ?
           <div>
-            {this.findPost().join('') == 0 ? '' : <button className='btn-prev' onClick={this.actionMove.bind(null, 'prev')}>Prev</button>}
+            {this.findPost() == 0 ? '' : <button className='btn-prev' onClick={this.actionMove.bind(null, 'prev')}>Prev</button>}
             <button className='btn-next' onClick={this.actionMove.bind(null, 'next')}>Next</button>
           </div>
           :
@@ -153,11 +160,12 @@ class PostsShow extends Component {
         }
 
         <PostVideo
-          post={this.props.post}
-          onVote={this.props.userVote}/>
+          post={posts.length !== 0 ? this.props.posts.data.children[this.findPost()] : this.props.post[0].data.children[0]}
+          onVote={this.props.userVote}
+          key='uniqueKey' />
 
         <div className='show-comments'>
-          {this.renderComments()}
+          {post && post[0].data.children[0].data.id == this.props.params.id ? this.renderComments() : <Loader />}
         </div>
 
       </div>

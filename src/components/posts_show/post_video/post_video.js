@@ -5,13 +5,12 @@ import './post_video.css';
 
 const PostVideo = ({post, onVote}) => {
 
-  var post          = post[0].data.children[0];
   var video_embed   = post.data.media_embed.content;
   var linkToSource  = post.data.url;
   var linkToReddit  = 'https://www.reddit.com' + post.data.permalink;
 
   if (post.data.over_18) {
-    var thumbnail = 'style/imgs/nsfw.jpg';
+    var thumbnail = '/style/imgs/nsfw.jpg';
   }else {
     if (post.data.preview) {
       var thumbnail = post.data.preview.images[0].source.url;
@@ -73,7 +72,7 @@ const PostVideo = ({post, onVote}) => {
   }
 
   return (
-    <div className='show-content' key='12345'>
+    <div className='show-content'>
       <div className='show-content-video' dangerouslySetInnerHTML={{__html: specialCharsReplace(video_embed)}} />
       <div className='show-content-stats'>
         <span className='show-content-title'>{specialCharsReplace(post.data.title)}</span>
