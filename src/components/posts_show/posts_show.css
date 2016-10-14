@@ -25,28 +25,45 @@
   border-radius: 0 2px 2px 0;
 }
 
-.btn-back{
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  background-color: rgb(228, 228, 228);
-  padding: 4px 10px;
-  color: gray;
-  border-radius: 4px;
-  z-index: 101;
-}
-
 .show{
   flex-grow: 2;
 }
 
-.show-comments{
+.show-comments, .show-thumbnails{
   max-width: 900px;
   margin: 0 auto;
   border-radius: 5px;
   margin-top: 10px;
+}
+
+.show-thumbnails{
+  background: white;
+  display: flex;
+  align-items: center;
+  overflow: auto;
+
+  &-item{
+    margin: 10px 0px 10px 10px;
+    cursor: pointer;
+    div{
+      width: 168px;
+      height: 90px;
+      background-size: cover;
+      background-position: center;
+    }
+  }
+  &-item_active{
+    border-top: 4px solid $secondColor;
+    div{
+      filter: grayscale(1);
+    }
+  }
+}
+
+.show-comments{
   padding: 0;
   box-sizing: border-box;
+  font-size: 11pt;
 
   .show-comments-chain{
     margin-bottom: 10px;

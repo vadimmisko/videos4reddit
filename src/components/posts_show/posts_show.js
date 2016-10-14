@@ -15,8 +15,9 @@ import './posts_show.css';
 class PostsShow extends Component {
   constructor(){
     super();
-    this.actionMove = this.actionMove.bind(this);
-    this.morePosts  = this.morePosts.bind(this);
+    this.actionMove     = this.actionMove.bind(this);
+    this.thumbnailMove  = this.thumbnailMove.bind(this);
+    this.morePosts      = this.morePosts.bind(this);
   }
 
   componentWillMount(){
@@ -110,6 +111,32 @@ class PostsShow extends Component {
     })
   }
 
+  thumbnailMove(id){
+    browserHistory.push('/post/' + id);
+    const deb = _.debounce(() => { this.componentWillMount() }, 0.1);
+    deb();
+  }
+
+  renderThumbnails(){
+    return this.props.posts.data.children.map((post) => {
+      let classes   = 'show-thumbnails-item';
+      var thumbnail = { backgroundImage: 'url(' + post.data.thumbnail + ')'};
+
+      if (post.data.over_18 == true) {
+        var thumbnail = { backgroundImage: 'url(/style/imgs/nsfw.jpg)'};
+      }
+      if (post.data.id == this.props.params.id) {
+        classes = classes + ' show-thumbnails-item_active';
+      }
+
+      return(
+        <div key={post.data.id} className={classes}>
+          <div style={thumbnail} onClick={this.thumbnailMove.bind(null, post.data.id)} />
+        </div>
+      )
+    });
+  }
+
   findPost(){
     var currentPostNum = this.props.posts.data.children.map((post) => {
       if (post.data.id == this.props.params.id) {
@@ -136,6 +163,9 @@ class PostsShow extends Component {
     const { post }  = this.props;
     const { posts } = this.props;
 
+    if (document.getElementsByClassName('show-thumbnails-item_active')[0] !== undefined) {
+      document.getElementsByClassName('show-thumbnails-item_active')[0].scrollIntoView(false);
+    }
     window.scrollTo(0, 0);
 
     if (posts.length == 0) {
@@ -146,8 +176,6 @@ class PostsShow extends Component {
 
     return (
       <div className='show'>
-        <Link to='/' className='btn-back'>Back</Link>
-
         {
           posts.length !== 0
           ?
@@ -163,6 +191,10 @@ class PostsShow extends Component {
           post={posts.length !== 0 ? this.props.posts.data.children[this.findPost()] : this.props.post[0].data.children[0]}
           onVote={this.props.userVote}
           key='uniqueKey' />
+
+        <div className='show-thumbnails'>
+          {posts.length !== 0 ? this.renderThumbnails() : ''}
+        </div>
 
         <div className='show-comments'>
           {post && post[0].data.children[0].data.id == this.props.params.id ? this.renderComments() : <Loader />}

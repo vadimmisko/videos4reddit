@@ -19,17 +19,25 @@ export default class App extends Component {
       <div className="app">
 
         <header className="navbar">
-          <div></div>
-          <Link to='/'><div className="logo"></div></Link>
-          <div className="navbar-auth">
+          {this.props.location.pathname!=='/' ? <Link to='/' className='btn-back'>Back</Link> : <div></div>}
+
+          <Link to='/' className='logo'><img src='/style/imgs/logo.png' /></Link>
+
           {
             sessionStorage.getItem('user')
             ?
-            <span onClick={this.exit}>{sessionStorage.getItem('user')}</span>
+            <div className="navbar-auth">
+              <span onClick={this.exit}>{sessionStorage.getItem('user')}</span>
+            </div>
             :
-            <Link to='/signin'>Sign in</Link>
+            <Link to='/signin' title='Sign in with reddit username'>
+              <div className="navbar-auth">
+                <span className='signin-text'>Sign in</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16 9v-4l8 7-8 7v-4h-8v-6h8zm-16-7v20h14v-2h-12v-16h12v-2h-14z"/></svg>
+              </div>
+            </Link>
           }
-          </div>
+
         </header>
 
         {this.props.children}
