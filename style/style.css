@@ -46,6 +46,7 @@ a{
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-size: 11pt;
   box-shadow: 0 1px 2px rgba(0,0,0,.1);
 
   a{text-decoration: none;}
@@ -68,7 +69,6 @@ a{
     background-color: rgb(245, 245, 245);
     transition: all 0.1s ease-out;
     &:hover{
-      /*text-decoration: none;*/
       background-color: rgb(220, 220, 220);
     }
   }
@@ -87,8 +87,8 @@ a{
       background-color: rgb(220, 220, 220);
     }
     svg{
-      width: 20px;
-      height: 20px;
+      width: 16px;
+      height: 16px;
       margin-left: 6px;
       fill: gray;
     }
