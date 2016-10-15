@@ -120,11 +120,17 @@ class PostsShow extends Component {
   renderThumbnails(){
     return this.props.posts.data.children.map((post) => {
       let classes   = 'show-thumbnails-item';
-      var thumbnail = { backgroundImage: 'url(' + post.data.thumbnail + ')'};
 
       if (post.data.over_18 == true) {
         var thumbnail = { backgroundImage: 'url(/style/imgs/nsfw.jpg)'};
+      }else {
+        if (post.data.thumbnail !== 'default') {
+          var thumbnail = { backgroundImage: 'url(' + post.data.thumbnail + ')'};
+        }else {
+          var thumbnail = { backgroundColor: 'black'};
+        }
       }
+
       if (post.data.id == this.props.params.id) {
         classes = classes + ' show-thumbnails-item_active';
       }

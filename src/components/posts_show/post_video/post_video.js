@@ -85,14 +85,17 @@ const PostVideo = ({post, onVote}) => {
           </div>
         </div>
         <div className='show-content-bottom'>
-          <div>Score: {post.data.score} · Comments: {post.data.num_comments} · Submitted {moment.unix(post.data.created).calendar()}</div>
+          <div>Comments: {post.data.num_comments} · Submitted {moment.unix(post.data.created).calendar()}</div>
 
 
-          <div className='vote-arrows'>
-            {/* TODO: Make this into another component */}
+          <div className='show-content-bottom-score'>
+            <span>{post.data.score}</span>
+            <div className='vote-arrows'>
+              {/* TODO: Make this into another component */}
 
-            <button onClick={voting.bind(null, '1')} className='vote-btn upvote'><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M13 7v-6l11 11-11 11v-6h-13v-10z"/></svg></button>
-            <button onClick={voting.bind(null, '-1')} className='vote-btn downvote'><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M13 7v-6l11 11-11 11v-6h-13v-10z"/></svg></button>
+              <button onClick={voting.bind(null, '1')} className='vote-btn upvote'><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M13 7v-6l11 11-11 11v-6h-13v-10z"/></svg></button>
+              <button onClick={voting.bind(null, '-1')} className='vote-btn downvote'><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M13 7v-6l11 11-11 11v-6h-13v-10z"/></svg></button>
+            </div>
           </div>
         </div>
 
