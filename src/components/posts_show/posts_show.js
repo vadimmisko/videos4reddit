@@ -125,7 +125,7 @@ class PostsShow extends Component {
         var thumbnail = { backgroundImage: 'url(/style/imgs/nsfw.jpg)'};
       }else {
         if (post.data.thumbnail !== 'default') {
-          var thumbnail = { backgroundImage: 'url(' + post.data.thumbnail + ')'};
+          var thumbnail = { backgroundImage: 'url(' + post.data.preview.images[0].source.url + ')'};
         }else {
           var thumbnail = { backgroundColor: 'black'};
         }
