@@ -1,6 +1,6 @@
 {
   "name": "videos4reddit",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Simple UI for reddit",
   "main": "index.js",
   "repository": "https://github.com/VadimMisko/Videos4Reddit",
