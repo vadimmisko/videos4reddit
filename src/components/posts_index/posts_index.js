@@ -25,7 +25,7 @@ class PostsIndex extends Component {
         var divStyle = { backgroundImage: 'url(/style/imgs/nsfw.jpg)'};
       }else {
         if (post.data.thumbnail !== 'default') {
-          var divStyle = { backgroundImage: 'url(' + post.data.preview.images[0].source.url + ')'};
+          var divStyle = { backgroundImage: 'url(' + post.data.thumbnail + ')'};
         }else {
           var divStyle = { backgroundColor: 'black'};
         }

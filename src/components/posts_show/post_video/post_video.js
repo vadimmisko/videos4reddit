@@ -81,6 +81,7 @@ const PostVideo = ({post, onVote}) => {
           <div className='source-icon' style={srcIcon}></div>
           <div className='source'>
             <span>Submitted by {post.data.author}</span>
+            {console.log(video_embed)}
             <span><a target='_blank' href={linkToSource}>Source</a> · <a target='_blank' href={linkToReddit}>Link to a reddit post</a></span>
           </div>
         </div>
