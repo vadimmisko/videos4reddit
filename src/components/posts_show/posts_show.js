@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import SnuOwnd from 'snuownd';
 import moment from 'moment';
-import React,{ Component, PropTypes } from 'react';
+import React, { Component } from 'react';``
 import { connect } from 'react-redux';
 import { Link, browserHistory } from 'react-router';
 
@@ -125,7 +125,7 @@ class PostsShow extends Component {
         var thumbnail = { backgroundImage: 'url(/style/imgs/nsfw.jpg)'};
       }else {
         if (post.data.thumbnail !== 'default') {
-          var thumbnail = { backgroundImage: 'url(' + post.data.preview.images[0].source.url + ')'};
+          var thumbnail = { backgroundImage: 'url(' + post.data.thumbnail + ')'};
         }else {
           var thumbnail = { backgroundColor: 'black'};
         }
